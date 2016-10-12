@@ -1,18 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  
+
   <parent>
     <artifactId>oss-parent</artifactId>
     <groupId>org.sonatype.oss</groupId>
     <version>7</version>
   </parent>
-  
+
   <groupId>org.openpreservation.jhove</groupId>
   <artifactId>jhove</artifactId>
   <version>1.15.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-  
+
   <name>JHOVE - JSTOR/Harvard Object Validation Environment</name>
   <description>JHOVE provides functions to perform format-specific identification, validation, and characterization of digital objects.</description>
   <url>https://github.com/openpreserve/jhove/</url>
@@ -28,7 +28,7 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
+
   <developers>
     <developer>
       <email>carl@openpreservation.org</email>
@@ -39,14 +39,14 @@
       <id>carlwilson</id>
     </developer>
   </developers>
-  
+
   <modules>
     <module>jhove-core</module>
     <module>jhove-modules</module>
     <module>jhove-apps</module>
     <module>jhove-installer</module>
   </modules>
-  
+
   <scm>
     <url>https://github.com/openpreserve/jhove/</url>
     <connection>scm:git:https://github.com/openpreserve/jhove.git</connection>
@@ -64,10 +64,10 @@
     <repository>
       <id>OPF Artefactory</id>
       <name>OPF Artefactory-releases</name>
-      <url>http://artifactory.opf-labs.org/artifactory/opf-dev-local</url>
+      <url>http://artifactory.openpreservation.org/artifactory/opf-dev-local/</url>
     </repository>
   </distributionManagement>
-  
+
   <repositories>
     <repository>
       <snapshots>
@@ -75,10 +75,10 @@
       </snapshots>
       <id>opf-dev</id>
       <name>OPF development</name>
-      <url>http://artifactory.opf-labs.org/artifactory/opf-dev</url>
+      <url>http://artifactory.openpreservation.org/artifactory/opf-dev/</url>
     </repository>
   </repositories>
-  
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -93,7 +93,7 @@
     <jhove.timestamp>${maven.build.timestamp}</jhove.timestamp>
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
   </properties>
-  
+
   <build>
     <pluginManagement>
       <plugins>
@@ -130,9 +130,12 @@
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>${jacoco.version}</version>
-        </plugin>        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build
-        itself. -->
+        </plugin>
         <plugin>
+          <!--
+          This plugin's configuration is used to store Eclipse m2e settings
+          only. It has no influence on the Maven build itself.
+          -->
           <groupId>org.eclipse.m2e</groupId>
           <artifactId>lifecycle-mapping</artifactId>
           <version>1.0.0</version>
@@ -244,7 +247,7 @@
       </plugin>
     </plugins>
   </build>
-  
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -255,41 +258,41 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-  
+
   <profiles>
     <profile>
       <id>sonar-coverage-per-test</id>
       <build>
         <plugins>
-          
+
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
             <configuration>
-              
+
               <properties>
                 <property>
                   <name>listener</name>
                   <value>org.sonar.java.jacoco.JUnitListener</value>
                 </property>
               </properties>
-              
+
             </configuration>
           </plugin>
         </plugins>
       </build>
       <dependencies>
-        
+
         <dependency>
           <groupId>org.codehaus.sonar-plugins.java</groupId>
           <artifactId>sonar-jacoco-listeners</artifactId>
           <version>1.2</version>
           <scope>test</scope>
         </dependency>
-        
+
       </dependencies>
     </profile>
-    
+
     <profile>
       <id>release-sign-artifacts</id>
       <activation>
@@ -298,7 +301,7 @@
           <value>true</value>
         </property>
       </activation>
-      
+
       <build>
         <plugins>
           <plugin>
@@ -338,11 +341,11 @@
               </execution>
             </executions>
           </plugin>
-          
+
         </plugins>
       </build>
     </profile>
-    
+
     <profile>
       <id>sonar</id>
       <activation>
@@ -355,5 +358,5 @@
       </properties>
     </profile>
   </profiles>
-  
+
 </project>

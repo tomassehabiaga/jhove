@@ -4346,6 +4346,10 @@ public class PdfModule extends ModuleBase {
                                 PropertyType.DATE,
                                 propDate));
                 }
+                else if (((Literal) tok).getValue().isEmpty()) {
+                    // the literal is empty, this is a legal way to ignore the date
+                    // set not date and continue
+                }
                 else {
                     throw new PdfInvalidException(MessageConstants.ERR_DATE_MALFORMEED, 0);
                 }
